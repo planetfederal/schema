@@ -1,20 +1,22 @@
 #spatialconnect-schema
 
-## Protocol Buffers
+## Java
+This will put a spatialconnect-schema jar in your local maven repo
 
-### Objective-C
+```
+sh java.sh
+```
+
+## Objective-C
+### Protocol Buffers
+
 ```
 protoc SCMessage.proto --objc_out="./"
 ```
 
-### java
-```
-protoc SCMessage.proto --java_out="./"
-```
-
-## Actions
+### Actions
 To build the actions run
 ```
-node index.js [objc|java]
+node index.js objc
 ```
-It will produce Commands.java and Commands.h. 
+It will produce Commands.h.

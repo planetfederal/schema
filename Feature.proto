@@ -6,8 +6,7 @@ option java_outer_classname = "SpatialConnect";
 message Feature {
   string fid = 1;
   map<string, string> properties = 2;
-  string geometryType = 3;
-  bytes geometry = 4;
+  bytes geometry = 3;
 };
 
 message Operation {

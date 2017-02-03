@@ -41,7 +41,7 @@ uploadArchives {
 // In this section you declare the dependencies for your production and test code
 dependencies {
     compile 'org.slf4j:slf4j-api:1.7.7'
-    compile 'com.google.protobuf:protobuf-java:3.0.0'
+    compile 'com.google.protobuf:protobuf-java:3.1.0'
     testCompile 'junit:junit:4.11'
 }
 

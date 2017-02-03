@@ -3,6 +3,7 @@ node index.js java
 mkdir -p src/main/java/com/boundlessgeo/spatialconnect/schema
 mv SCCommand.java src/main/java/com/boundlessgeo/spatialconnect/schema/
 protoc SCMessage.proto --java_out="./"
+protoc Feature.proto --java_out="./src/main/java"
 
 echo "package com.boundlessgeo.spatialconnect.schema;" > tmp
 cat SCMessageOuterClass.java >> tmp

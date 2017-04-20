@@ -59,24 +59,24 @@ if (arg === 'objc') {
 
 } else if (arg === 'java') {
   var javahead = 'package com.boundlessgeo.spatialconnect.schema;\n\n';
-  var javabody = `\n    private final int actionNumber;
+  var javabody = `\n    private final String action;
 
-    SCCommand(int actionNumber) {
-        this.actionNumber = actionNumber;
+    SCCommand(String action) {
+        this.action = action;
     }
 
-    public int value() {
-        return actionNumber;
+    public String value() {
+        return action;
     }
 
-    public static SCCommand fromActionNumber(int actionNumber) {
+    public static SCCommand fromAction(String action) {
         for (SCCommand v : values()) {
-            if (v.actionNumber == actionNumber) {
+            if (v.action == action) {
                 return v;
             }
         }
         throw new IllegalArgumentException(
-            String.valueOf(actionNumber) + " is not an action number associated with a SCCommand."
+            "Action: " + action + " is not an action associated with a SCCommand."
         );
     }
     \n`;
@@ -87,7 +87,7 @@ if (arg === 'objc') {
       if (!first) {
         val += ',\n';
       }
-      val += '\t' + k + '(' + v + ')';
+      val += '\t' + k + '(\"' + v + '\")';
       sub.onNext(val);
       first = false;
     });

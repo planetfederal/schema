@@ -1,0 +1,8 @@
+{
+  "build":"sh java.sh",
+  "install":"npm i",
+  "unit_test":"",
+  "integration_test":"",
+  "run":"",
+  "release":""
+}

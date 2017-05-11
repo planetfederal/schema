@@ -1,7 +1,7 @@
 syntax = "proto3";
 
-option java_package = "com.boundlessgeo.spatialconnect.schema";
-option java_outer_classname = "SpatialConnect";
+option java_package = "com.boundlessgeo.schema";
+option java_outer_classname = "FeaturePbf";
 
 message Feature {
   string fid = 1;

@@ -58,10 +58,10 @@ if (arg === 'objc') {
     );
 
 } else if (arg === 'java') {
-  var javahead = 'package com.boundlessgeo.spatialconnect.schema;\n\n';
+  var javahead = 'package com.boundlessgeo.schema;\n\n';
   var javabody = `\n    private final String action;
 
-    SCCommand(String action) {
+    Actions(String action) {
         this.action = action;
     }
 
@@ -69,14 +69,14 @@ if (arg === 'objc') {
         return action;
     }
 
-    public static SCCommand fromAction(String action) {
-        for (SCCommand v : values()) {
-            if (v.action == action) {
+    public static Actions fromAction(String action) {
+        for (Actions v : values()) {
+            if (v.action.equalsIgnoreCase(action)) {
                 return v;
             }
         }
         throw new IllegalArgumentException(
-            "Action: " + action + " is not an action associated with a SCCommand."
+            "Action: " + action + " is not an action associated with an Action."
         );
     }
     \n`;
@@ -94,10 +94,10 @@ if (arg === 'objc') {
     sub.onCompleted();
   }).reduce((acc,v) => {
     return acc + v;
-  },javahead+'public enum SCCommand {\n\n')
+  },javahead+'public enum Actions {\n\n')
     .subscribe(
       (d) => {
-        fs.writeFileSync('SCCommand.java',d+';\n'+ javabody +'};\n');
+        fs.writeFileSync('Actions.java',d+';\n'+ javabody +'};\n');
       }
     );
 }

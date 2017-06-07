@@ -5,7 +5,7 @@ option java_outer_classname = "MessagePbf";
 
 message Msg {
   string context = 1;
-  int32 correlationId = 2;
+  int64 correlationId = 2;
   string to = 3;
   string action = 4;
   string payload = 5;

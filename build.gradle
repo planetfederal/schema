@@ -1,8 +1,8 @@
 apply plugin: 'maven'
 apply plugin: 'java'
-sourceCompatibility = 1.8
-version = '0.8'
-group 'com.boundlessgeo.spatialconnect'
+sourceCompatibility = 1.7
+version = '0.9'
+group 'com.boundlessgeo'
 
 jar {
   manifest {

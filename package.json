@@ -1,6 +1,6 @@
 {
-  "name": "spatialconnect-schema",
-  "version": "0.8.0",
+  "name": "boundlessgeo-schema",
+  "version": "0.9.0",
   "description": "## Protocol Buffers",
   "main": "index.js",
   "scripts": {
@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/boundlessgeo/spatialconnect-schema.git"
+    "url": "https://github.com/boundlessgeo/schema.git"
   },
   "author": "Wes Richardet <wes@tetriscodes.com> (http://tetriscodes.com)",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/boundlessgeo/spatialconnect-schema/issues"
+    "url": "https://github.com/boundlessgeo/schema/issues"
   },
-  "homepage": "https://github.com/boundlessgeo/spatialconnect-schema",
+  "homepage": "https://github.com/boundlessgeo/schema",
   "dependencies": {
     "lodash": "4.14.2",
     "rx": "4.1.0"

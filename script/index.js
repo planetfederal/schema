@@ -1,6 +1,6 @@
 'use strict';
 
-var actions = require('./actions.json');
+var actions = require('./../actions.json');
 var fs = require('fs');
 var _ = require('lodash');
 var Rx = require('rx');

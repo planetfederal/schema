@@ -3,7 +3,7 @@ Commands.java
 SCCommand.java
 Scmessage.pbobjc.*
 SCMessageOuterClass.java
-node_modules
+script/node_modules
 src
 build
 .gradle

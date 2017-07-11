@@ -9,3 +9,6 @@ protoc ./proto/Feature.proto --java_out="./src/main/java"
 ./java/gradlew -p java install
 ./java/gradlew -p java uploadArchives
 
+rm -rf src
+rm -rf build
+

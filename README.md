@@ -16,6 +16,13 @@ sh script/java.sh
 protoc Msg.proto --objc_out="./"
 ```
 
+## Python
+This will build a distribution in the `python/dist` directory
+
+```
+sh script/python.sh
+```
+
 ### Actions
 To build the actions run
 ```

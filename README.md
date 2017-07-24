@@ -13,7 +13,7 @@ sh script/java.sh
 ### Protocol Buffers
 
 ```
-protoc SCMessage.proto --objc_out="./"
+protoc Msg.proto --objc_out="./"
 ```
 
 ### Actions

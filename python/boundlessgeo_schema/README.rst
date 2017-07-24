@@ -3,7 +3,7 @@ boundlessgeo-schema
 
 This package will convert the packaged actions.json to a dictionary.
 By convention, Actions can be Queries or Commands in a
-[CQRS](https://martinfowler.com/bliki/CQRS.html) architecture.
+`CQRS <https://martinfowler.com/bliki/CQRS.html>`_ architecture.
 
 Installation
 

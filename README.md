@@ -19,6 +19,6 @@ protoc SCMessage.proto --objc_out="./"
 ### Actions
 To build the actions run
 ```
-node index.js objc
+node script/index.js objc
 ```
 It will produce Actions.h and Actions.m.

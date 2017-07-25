@@ -20,7 +20,7 @@ protoc Msg.proto --objc_out="./"
 This will build a distribution in the `python/dist` directory
 
 ```
-sh script/python.sh
+bash script/python.sh
 ```
 
 ### Actions

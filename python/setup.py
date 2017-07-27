@@ -25,4 +25,7 @@ setup(
         'Development Status :: 3 - Alpha',
         'Operating System :: Other OS',
     ],
+    install_requires=[
+        'protobuf==3.3.0',
+    ]
 )

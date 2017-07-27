@@ -1,10 +1,18 @@
-#!/bin/sh
+#!/bin/bash
 # present working dir you are running the command from
 PWD=`pwd`
 # script dir
-SCRIPT_DIR=$(dirname $(readlink -f $0))
+if [ `uname` == "Linux" ]; then
+    SCRIPT_DIR=$(dirname $(readlink -f $0))
+else
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+fi
 # python dir
 PYTHON_DIR=$SCRIPT_DIR/../python
+# destination dir
+DST_DIR=$PYTHON_DIR/boundlessgeo_schema
+# source directory for proto
+SRC_DIR=$SCRIPT_DIR/../proto
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
 # convert the actions.json to a actions.p (pickle), store the version from
@@ -26,6 +34,7 @@ with open('../python/boundlessgeo_schema/actions.p', 'wb') as fp:
     pickle.dump(actions_dict, fp)
 EOF
 )
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Msg.proto
 # switch to the python dir
 cd $PYTHON_DIR
 # build sdist package

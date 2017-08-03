@@ -1,0 +1,30 @@
+<project>
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.boundlessgeo</groupId>
+  <artifactId>schema</artifactId>
+  <version>0.12</version>
+  <dependencies>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>1.7.7</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>3.1.0</version>
+    </dependency>
+  </dependencies>
+  <distributionManagement>
+    <repository>
+        <id>central</id>
+        <name>repo.boundlessgeo.com-releases</name>
+        <url>http://repo.boundlessgeo.com/artifactory/release</url>
+    </repository>
+    <snapshotRepository>
+        <id>snapshots</id>
+        <name>repo.boundlessgeo.com-snapshots</name>
+        <url>http://repo.boundlessgeo.com/artifactory/release</url>
+    </snapshotRepository>
+  </distributionManagement>
+</project>

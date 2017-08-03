@@ -9,5 +9,5 @@ build
 .gradle
 .DS_Store
 node_modules
-
 objc_build
+java/target

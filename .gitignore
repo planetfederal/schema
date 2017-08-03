@@ -8,3 +8,4 @@ src
 build
 .gradle
 .DS_Store
+java/target

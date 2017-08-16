@@ -10,10 +10,10 @@ sh script/java.sh
 ```
 
 ## Objective-C
-### Protocol Buffers
+This will build to a folder called `objc_build` in the root dir
 
 ```
-protoc Msg.proto --objc_out="./"
+sh script/objc.sh
 ```
 
 ## Python

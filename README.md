@@ -1,6 +1,6 @@
 # Schema
 
-## Version 0.12.0
+## Version 0.12.1
 
 The Schema repository holds the protocol buffer message schemas used to exchange data between systems.
 The commands below will create Protobuf classes for use in iOS, Python, and JVM (Clojure, Java, Android) runtimes.
@@ -22,6 +22,16 @@ This will put a schema jar in your local maven repo
 ```
 sh script/java.sh
 ```
+
+After running the above command, if you want to publish the artifact,
+
+```
+cd java
+mvn deploy
+```
+> Note: your ~/.m2/settings.xml must be setup with authentication
+> credentials required to publish to the Boundless maven repo
+
 
 ## Objective-C
 This will build to a folder called `objc_build` in the root dir

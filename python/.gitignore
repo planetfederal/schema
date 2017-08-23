@@ -18,3 +18,4 @@ var/
 *venv*
 __pycache__
 *.pyc
+*.p

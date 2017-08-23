@@ -23,15 +23,16 @@ try:
 except ImportError:
     import cPickle as pickle
 from json import loads
-with open('../actions.json', 'r') as actions_json:
-    actions_str = actions_json.read()
-    actions_dict = loads(actions_str)
-    with open('../script/package.json', 'r') as version_file:
-        json_str = version_file.read()
-        version = loads(json_str)['version']
-        actions_dict['_version'] = version
-with open('../python/boundlessgeo_schema/actions.p', 'wb') as fp:
-    pickle.dump(actions_dict, fp)
+for j in ['actions', 'events']:
+    with open('../{0}.json'.format(j), 'r') as _json:
+        _str = _json.read()
+        _dict = loads(_str)
+        with open('../script/package.json', 'r') as version_file:
+            json_str = version_file.read()
+            version = loads(json_str)['version']
+            _dict['_version'] = version
+    with open('../python/boundlessgeo_schema/{0}.p'.format(j), 'wb') as fp:
+        pickle.dump(_dict, fp)
 EOF
 )
 protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Msg.proto

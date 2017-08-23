@@ -12,6 +12,13 @@ def get_schema():
     return schema
 
 
+def get_events():
+    with open(join(dirname(abspath(__file__)), 'events.p'), 'rb') as fp:
+        events = pickle.load(fp)
+
+    return events
+
+
 def get_version():
     schema = get_schema()
     version = schema['_version']

@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.boundlessgeo</groupId>
   <artifactId>schema</artifactId>
-  <version>0.12</version>
+  <version>0.12.2-SNAPSHOT</version>
   <dependencies>
     <dependency>
       <groupId>org.slf4j</groupId>
@@ -17,14 +17,14 @@
   </dependencies>
   <distributionManagement>
     <repository>
-        <id>central</id>
-        <name>repo.boundlessgeo.com-releases</name>
-        <url>http://repo.boundlessgeo.com/artifactory/release</url>
+        <id>boundlessgeo-release</id>
+        <name>Boundless Releases</name>
+        <url>https://repo.boundlessgeo.com/release</url>
     </repository>
     <snapshotRepository>
-        <id>snapshots</id>
-        <name>repo.boundlessgeo.com-snapshots</name>
-        <url>http://repo.boundlessgeo.com/artifactory/release</url>
+        <id>boundlessgeo-snapshot</id>
+        <name>Boundless Snapshots</name>
+        <url>https://repo.boundlessgeo.com/snapshot</url>
     </snapshotRepository>
   </distributionManagement>
 </project>

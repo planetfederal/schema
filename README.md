@@ -1,6 +1,6 @@
 # Schema
 
-## Version 0.12.1
+## Version 0.13.0
 
 The Schema repository holds the protocol buffer message schemas used to exchange data between systems.
 The commands below will create Protobuf classes for use in iOS, Python, and JVM (Clojure, Java, Android) runtimes.

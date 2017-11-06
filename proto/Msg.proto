@@ -2,6 +2,7 @@ syntax = "proto3";
 
 option java_package = "com.boundlessgeo.schema";
 option java_outer_classname = "MessagePbf";
+option go_package = "com.boundlessgeo.schema";
 
 message Msg {
   string context = 1;

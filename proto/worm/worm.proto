@@ -1,7 +1,3 @@
-// Copyright 2017, Boundless, https://boundlessgeo.com - All Rights Reserved
-// Unauthorized copying of this file, via any medium is strictly prohibited
-// Proprietary and confidential
-
 syntax = "proto3";
 
 package boundless.services;

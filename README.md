@@ -1,22 +1,23 @@
 # Schema
 
-## Version 0.13.0
+## Version 0.14.0
 
 The Schema repository holds the protocol buffer message schemas used to exchange data between systems.
 The commands below will create Protobuf classes for use in iOS, Python, and JVM (Clojure, Java, Android) runtimes.
 Javascript will use the `actions.json` and `events.json` since the contents of the file is already native to the language.
 
-## install
-First you must install the dependencies for the Javascript script that
-will build the language-specific classes.
+## Building Schema Artifacts
+*As of version 0.14.0, you no longer need NodeJS/NPM to build the artifacts. You will need sh and Bash (available on
+most Linux distributions by default, easily installed on OSX/MacOS. Cigwin may work on Windows, but it has not been
+tested.).*
 
-```
-cd script/
-npm install
-cd -
-```
+The schema definitions are contained in `actions.json` and `events.json`. For artifacts that need/use a version number,
+the version is in `script/version.json`. Any PRs that make changes to the schema (or add/delete schema definition files)
+should always bump the version in `script/version.json`. The helper scripts (documented below) will convert the schema
+JSON files into appropriate source for the target language/platform and compile the artifact, versioning them where
+applicable. The bulk of the conversion logic is contained and documented in `script/index.sh`.
 
-## Java
+### Java
 This will put a schema jar in your local maven repo
 
 ```
@@ -33,23 +34,16 @@ mvn deploy
 > credentials required to publish to the Boundless maven repo
 
 
-## Objective-C
+### Objective-C
 This will build to a folder called `objc_build` in the root dir
 
 ```
 sh script/objc.sh
 ```
 
-## Python
+### Python
 This will build a distribution in the `python/dist` directory
 
 ```
 bash script/python.sh
 ```
-
-### Actions
-To build the actions run
-```
-node script/index.js objc
-```
-It will produce Actions.h and Actions.m.

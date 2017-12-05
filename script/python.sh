@@ -27,7 +27,7 @@ for j in ['actions', 'events']:
     with open('../{0}.json'.format(j), 'r') as _json:
         _str = _json.read()
         _dict = loads(_str)
-        with open('../script/package.json', 'r') as version_file:
+        with open('../script/version.json', 'r') as version_file:
             json_str = version_file.read()
             version = loads(json_str)['version']
             _dict['_version'] = version

@@ -1,0 +1,32 @@
+// Copyright 2017, Boundless, https://boundlessgeo.com - All Rights Reserved
+// Unauthorized copying of this file, via any medium is strictly prohibited
+// Proprietary and confidential
+
+syntax = "proto3";
+
+package boundless.services;
+
+// service definition.
+service WormService {
+  // Sends a command
+  rpc SendCommand(Command) returns (Response) {}
+}
+
+// The request command.
+message Command {
+  string action = 1;
+  bytes data = 2;
+  ContextType context = 3;
+
+  enum ContextType {
+    DESKTOP = 0;
+    WEB = 1;
+    ANDROID = 2;
+    IOS = 3;
+  }
+}
+
+// The response from the service.
+message Response {
+  string message = 1;
+}

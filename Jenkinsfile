@@ -14,7 +14,7 @@ node {
         sh """
           docker run -v \$(pwd -P):/code \
                      -w /code quay.io/boundlessgeo/sonar-maven-py3-alpine bash \
-                     -e -c 'apk add --update protobuf && ./script/java.sh'
+                     -e -c 'apk add --update --no-cache protobuf py-setuptools && ./script/java.sh && ./script/objc.sh && ./script/python.sh'
           """
       }
     }

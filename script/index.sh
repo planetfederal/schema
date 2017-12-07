@@ -1,10 +1,4 @@
-#!/bin/sh
-###############################################################################
-# Copyright 2017, Boundless, https://boundlessgeo.com - All Rights Reserved
-# Unauthorized copying of this file, via any medium is strictly prohibited
-# Proprietary and confidential
-###############################################################################
-
+#!/bin/bash
 ###############################################################################
 # Description:
 # This script generates source code from the JSON spec files (for languages

@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 # JSON schema files. Figure out the path based on the location of this script.
 THIS_SCRIPT=$(readlink -f $0)
 # This script's directory

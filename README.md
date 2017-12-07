@@ -7,15 +7,22 @@ The commands below will create Protobuf classes for use in iOS, Python, and JVM 
 Javascript will use the `actions.json` and `events.json` since the contents of the file is already native to the language.
 
 ## Building Schema Artifacts
-*As of version 0.14.0, you no longer need NodeJS/NPM to build the artifacts. You will need sh and Bash (available on
+> As of version 0.14.0, you no longer need NodeJS/NPM to build the artifacts. You will need sh and Bash (available on
 most Linux distributions by default, easily installed on OSX/MacOS. Cigwin may work on Windows, but it has not been
-tested.).*
+tested.).
 
 The schema definitions are contained in `actions.json` and `events.json`. For artifacts that need/use a version number,
 the version is in `script/version.json`. Any PRs that make changes to the schema (or add/delete schema definition files)
 should always bump the version in `script/version.json`. The helper scripts (documented below) will convert the schema
 JSON files into appropriate source for the target language/platform and compile the artifact, versioning them where
 applicable. The bulk of the conversion logic is contained and documented in `script/index.sh`.
+
+Currently, there is a Jenkins job that will automatically deploy the Java and Python artifacts, located here:
+
+https://ciapi.boundlessgeo.io/job/boundless-schema-deploy
+
+Any time a commit is pushed to `master`, that job will pick up the changes and deploy new artifacts. **It is imperative
+that commits merged to `master` increment the version in `script/version.json`.**
 
 ### Java
 This will put a schema jar in your local maven repo

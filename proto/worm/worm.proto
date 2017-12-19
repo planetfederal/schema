@@ -5,14 +5,15 @@ package boundless.services;
 // service definition.
 service WormService {
   // Sends a command
-  rpc SendCommand(Command) returns (Response) {}
+  rpc SendCommand(Command) returns (Event) {}
 }
 
-// The request command.
+// Command from a client.
 message Command {
-  string action = 1;
-  bytes data = 2;
-  ContextType context = 3;
+  string id = 1;
+  string action = 2;
+  bytes data = 3;
+  ContextType context = 4;
 
   enum ContextType {
     DESKTOP = 0;
@@ -22,7 +23,10 @@ message Command {
   }
 }
 
-// The response from the service.
-message Response {
-  string message = 1;
+// An event emitted
+message Event {
+  string id = 1;
+  string type = 2;
+  bytes data = 3;
+  string parentId = 4;
 }

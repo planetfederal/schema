@@ -4,8 +4,11 @@ package boundless.services;
 
 // service definition.
 service WormService {
-  // Sends a command
-  rpc SendCommand(Command) returns (Event) {}
+  // Send a command
+  rpc Publish(Command) returns (Event) {}
+
+  // Send a command, receive events
+  rpc Subscribe(Command) returns (stream Event) {}
 }
 
 // Command from a client.

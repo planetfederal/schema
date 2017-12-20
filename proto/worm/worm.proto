@@ -21,16 +21,16 @@ message Command {
   enum ContextType {
     DESKTOP = 0;
     WEB = 1;
-    ANDROID = 2;
-    IOS = 3;
+    MOBILE = 2;
+    SERVICE = 3;
   }
 }
 
 // Result of an rpc call
 message Response {
-  bool success = 2;
-  bytes data = 3;
-  int32 code = 4;
+  bool success = 1;
+  bytes data = 2;
+  int32 code = 3;
 }
 
 // Subscribe for Events

@@ -9,62 +9,168 @@ It is generated from these files:
 	worm.proto
 
 It has these top-level messages:
-	Command
 	Response
+	Subscription
 */
 package boundless_services
 
 import proto "github.com/golang/protobuf/proto"
+import boundless_services1 "Event.pb"
+import boundless_services2 "Command.pb"
+
+import (
+	context "golang.org/x/net/context"
+	grpc "google.golang.org/grpc"
+)
+
+// Reference imports to suppress errors if they are not otherwise used.
+var _ context.Context
+var _ grpc.ClientConn
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
 
-type Command_ContextType int32
-
-const (
-	Command_DESKTOP Command_ContextType = 0
-	Command_WEB     Command_ContextType = 1
-	Command_ANDROID Command_ContextType = 2
-	Command_IOS     Command_ContextType = 3
-)
-
-var Command_ContextType_name = map[int32]string{
-	0: "DESKTOP",
-	1: "WEB",
-	2: "ANDROID",
-	3: "IOS",
-}
-var Command_ContextType_value = map[string]int32{
-	"DESKTOP": 0,
-	"WEB":     1,
-	"ANDROID": 2,
-	"IOS":     3,
-}
-
-func (x Command_ContextType) String() string {
-	return proto.EnumName(Command_ContextType_name, int32(x))
-}
-
-// The request command.
-type Command struct {
-	Action  string              `protobuf:"bytes,1,opt,name=action" json:"action,omitempty"`
-	Data    []byte              `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	Context Command_ContextType `protobuf:"varint,3,opt,name=context,enum=boundless.services.Command_ContextType" json:"context,omitempty"`
-}
-
-func (m *Command) Reset()         { *m = Command{} }
-func (m *Command) String() string { return proto.CompactTextString(m) }
-func (*Command) ProtoMessage()    {}
-
-// The response from the service.
+// Result of an rpc call
 type Response struct {
-	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
+	Success bool   `protobuf:"varint,1,opt,name=success" json:"success,omitempty"`
+	Data    []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Code    int32  `protobuf:"varint,3,opt,name=code" json:"code,omitempty"`
 }
 
 func (m *Response) Reset()         { *m = Response{} }
 func (m *Response) String() string { return proto.CompactTextString(m) }
 func (*Response) ProtoMessage()    {}
 
+// Subscribe for Events
+type Subscription struct {
+	Topic string `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+}
+
+func (m *Subscription) Reset()         { *m = Subscription{} }
+func (m *Subscription) String() string { return proto.CompactTextString(m) }
+func (*Subscription) ProtoMessage()    {}
+
 func init() {
-	proto.RegisterEnum("boundless.services.Command_ContextType", Command_ContextType_name, Command_ContextType_value)
+}
+
+// Client API for WormService service
+
+type WormServiceClient interface {
+	// Issue a Command
+	Send(ctx context.Context, in *boundless_services2.Command, opts ...grpc.CallOption) (*Response, error)
+	// Subscribe, receive Events
+	Subscribe(ctx context.Context, in *Subscription, opts ...grpc.CallOption) (WormService_SubscribeClient, error)
+}
+
+type wormServiceClient struct {
+	cc *grpc.ClientConn
+}
+
+func NewWormServiceClient(cc *grpc.ClientConn) WormServiceClient {
+	return &wormServiceClient{cc}
+}
+
+func (c *wormServiceClient) Send(ctx context.Context, in *boundless_services2.Command, opts ...grpc.CallOption) (*Response, error) {
+	out := new(Response)
+	err := grpc.Invoke(ctx, "/boundless.services.WormService/Send", in, out, c.cc, opts...)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func (c *wormServiceClient) Subscribe(ctx context.Context, in *Subscription, opts ...grpc.CallOption) (WormService_SubscribeClient, error) {
+	stream, err := grpc.NewClientStream(ctx, &_WormService_serviceDesc.Streams[0], c.cc, "/boundless.services.WormService/Subscribe", opts...)
+	if err != nil {
+		return nil, err
+	}
+	x := &wormServiceSubscribeClient{stream}
+	if err := x.ClientStream.SendProto(in); err != nil {
+		return nil, err
+	}
+	if err := x.ClientStream.CloseSend(); err != nil {
+		return nil, err
+	}
+	return x, nil
+}
+
+type WormService_SubscribeClient interface {
+	Recv() (*boundless_services1.Event, error)
+	grpc.ClientStream
+}
+
+type wormServiceSubscribeClient struct {
+	grpc.ClientStream
+}
+
+func (x *wormServiceSubscribeClient) Recv() (*boundless_services1.Event, error) {
+	m := new(boundless_services1.Event)
+	if err := x.ClientStream.RecvProto(m); err != nil {
+		return nil, err
+	}
+	return m, nil
+}
+
+// Server API for WormService service
+
+type WormServiceServer interface {
+	// Issue a Command
+	Send(context.Context, *boundless_services2.Command) (*Response, error)
+	// Subscribe, receive Events
+	Subscribe(*Subscription, WormService_SubscribeServer) error
+}
+
+func RegisterWormServiceServer(s *grpc.Server, srv WormServiceServer) {
+	s.RegisterService(&_WormService_serviceDesc, srv)
+}
+
+func _WormService_Send_Handler(srv interface{}, ctx context.Context, buf []byte) (proto.Message, error) {
+	in := new(boundless_services2.Command)
+	if err := proto.Unmarshal(buf, in); err != nil {
+		return nil, err
+	}
+	out, err := srv.(WormServiceServer).Send(ctx, in)
+	if err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func _WormService_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) error {
+	m := new(Subscription)
+	if err := stream.RecvProto(m); err != nil {
+		return err
+	}
+	return srv.(WormServiceServer).Subscribe(m, &wormServiceSubscribeServer{stream})
+}
+
+type WormService_SubscribeServer interface {
+	Send(*boundless_services1.Event) error
+	grpc.ServerStream
+}
+
+type wormServiceSubscribeServer struct {
+	grpc.ServerStream
+}
+
+func (x *wormServiceSubscribeServer) Send(m *boundless_services1.Event) error {
+	return x.ServerStream.SendProto(m)
+}
+
+var _WormService_serviceDesc = grpc.ServiceDesc{
+	ServiceName: "boundless.services.WormService",
+	HandlerType: (*WormServiceServer)(nil),
+	Methods: []grpc.MethodDesc{
+		{
+			MethodName: "Send",
+			Handler:    _WormService_Send_Handler,
+		},
+	},
+	Streams: []grpc.StreamDesc{
+		{
+			StreamName:    "Subscribe",
+			Handler:       _WormService_Subscribe_Handler,
+			ServerStreams: true,
+		},
+	},
 }

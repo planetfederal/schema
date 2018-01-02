@@ -20,6 +20,13 @@ ifeq ($(UNAME), Linux)
 endif
 
 worm.pb.go: ../proto/worm.proto
-	protoc --go_out=. --proto_path=../proto ../proto/worm.proto
+	protoc --go_out=plugins=grpc:. --proto_path=../proto ../proto/worm.proto
 
-compile: worm.pb.go
+Event.pb.go: ../proto/Event.proto
+	protoc --go_out=. --proto_path=../proto ../proto/Event.proto
+
+Command.pb.go: ../proto/Command.proto
+	protoc --go_out=. --proto_path=../proto ../proto/Command.proto
+
+
+compile: worm.pb.go Event.pb.go Command.pb.go

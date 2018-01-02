@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package boundless.services;
+
+// An event emitted
+message Event {
+  string id = 1;
+  string type = 2;
+  bytes data = 3;
+  string parentId = 4;
+}

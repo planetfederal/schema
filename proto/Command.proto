@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package boundless.services;
+
+// Command from a client.
+message Command {
+  string id = 1;
+  string action = 2;
+  bytes data = 3;
+  ContextType context = 4;
+
+  enum ContextType {
+    DESKTOP = 0;
+    WEB = 1;
+    MOBILE = 2;
+    SERVICE = 3;
+  }
+}

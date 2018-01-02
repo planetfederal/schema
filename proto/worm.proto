@@ -2,28 +2,16 @@ syntax = "proto3";
 
 package boundless.services;
 
+import "Event.proto";
+import "Command.proto";
+
 // service definition.
 service WormService {
   // Issue a Command
-  rpc Issue(Command) returns (Response) {}
+  rpc Send(Command) returns (Response) {}
 
   // Subscribe, receive Events
   rpc Subscribe(Subscription) returns (stream Event) {}
-}
-
-// Command from a client.
-message Command {
-  string id = 1;
-  string action = 2;
-  bytes data = 3;
-  ContextType context = 4;
-
-  enum ContextType {
-    DESKTOP = 0;
-    WEB = 1;
-    MOBILE = 2;
-    SERVICE = 3;
-  }
 }
 
 // Result of an rpc call
@@ -38,10 +26,3 @@ message Subscription {
   string topic = 1;
 }
 
-// An event emitted
-message Event {
-  string id = 1;
-  string type = 2;
-  bytes data = 3;
-  string parentId = 4;
-}

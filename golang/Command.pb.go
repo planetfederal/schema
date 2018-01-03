@@ -7,6 +7,8 @@ Package boundless_services is a generated protocol buffer package.
 
 It is generated from these files:
 	Command.proto
+	Event.proto
+	worm.proto
 
 It has these top-level messages:
 	Command

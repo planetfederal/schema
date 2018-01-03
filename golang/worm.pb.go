@@ -2,21 +2,9 @@
 // source: worm.proto
 // DO NOT EDIT!
 
-/*
-Package boundless_services is a generated protocol buffer package.
-
-It is generated from these files:
-	worm.proto
-
-It has these top-level messages:
-	Response
-	Subscription
-*/
 package boundless_services
 
 import proto "github.com/golang/protobuf/proto"
-import boundless_services1 "Event.pb"
-import boundless_services2 "Command.pb"
 
 import (
 	context "golang.org/x/net/context"
@@ -57,7 +45,7 @@ func init() {
 
 type WormServiceClient interface {
 	// Issue a Command
-	Send(ctx context.Context, in *boundless_services2.Command, opts ...grpc.CallOption) (*Response, error)
+	Send(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Response, error)
 	// Subscribe, receive Events
 	Subscribe(ctx context.Context, in *Subscription, opts ...grpc.CallOption) (WormService_SubscribeClient, error)
 }
@@ -70,7 +58,7 @@ func NewWormServiceClient(cc *grpc.ClientConn) WormServiceClient {
 	return &wormServiceClient{cc}
 }
 
-func (c *wormServiceClient) Send(ctx context.Context, in *boundless_services2.Command, opts ...grpc.CallOption) (*Response, error) {
+func (c *wormServiceClient) Send(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
 	err := grpc.Invoke(ctx, "/boundless.services.WormService/Send", in, out, c.cc, opts...)
 	if err != nil {
@@ -95,7 +83,7 @@ func (c *wormServiceClient) Subscribe(ctx context.Context, in *Subscription, opt
 }
 
 type WormService_SubscribeClient interface {
-	Recv() (*boundless_services1.Event, error)
+	Recv() (*Event, error)
 	grpc.ClientStream
 }
 
@@ -103,8 +91,8 @@ type wormServiceSubscribeClient struct {
 	grpc.ClientStream
 }
 
-func (x *wormServiceSubscribeClient) Recv() (*boundless_services1.Event, error) {
-	m := new(boundless_services1.Event)
+func (x *wormServiceSubscribeClient) Recv() (*Event, error) {
+	m := new(Event)
 	if err := x.ClientStream.RecvProto(m); err != nil {
 		return nil, err
 	}
@@ -115,7 +103,7 @@ func (x *wormServiceSubscribeClient) Recv() (*boundless_services1.Event, error) 
 
 type WormServiceServer interface {
 	// Issue a Command
-	Send(context.Context, *boundless_services2.Command) (*Response, error)
+	Send(context.Context, *Command) (*Response, error)
 	// Subscribe, receive Events
 	Subscribe(*Subscription, WormService_SubscribeServer) error
 }
@@ -125,7 +113,7 @@ func RegisterWormServiceServer(s *grpc.Server, srv WormServiceServer) {
 }
 
 func _WormService_Send_Handler(srv interface{}, ctx context.Context, buf []byte) (proto.Message, error) {
-	in := new(boundless_services2.Command)
+	in := new(Command)
 	if err := proto.Unmarshal(buf, in); err != nil {
 		return nil, err
 	}
@@ -145,7 +133,7 @@ func _WormService_Subscribe_Handler(srv interface{}, stream grpc.ServerStream) e
 }
 
 type WormService_SubscribeServer interface {
-	Send(*boundless_services1.Event) error
+	Send(*Event) error
 	grpc.ServerStream
 }
 
@@ -153,7 +141,7 @@ type wormServiceSubscribeServer struct {
 	grpc.ServerStream
 }
 
-func (x *wormServiceSubscribeServer) Send(m *boundless_services1.Event) error {
+func (x *wormServiceSubscribeServer) Send(m *Event) error {
 	return x.ServerStream.SendProto(m)
 }
 

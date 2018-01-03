@@ -2,15 +2,6 @@
 // source: Event.proto
 // DO NOT EDIT!
 
-/*
-Package boundless_services is a generated protocol buffer package.
-
-It is generated from these files:
-	Event.proto
-
-It has these top-level messages:
-	Event
-*/
 package boundless_services
 
 import proto "github.com/golang/protobuf/proto"

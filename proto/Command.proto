@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package boundless.services;
+option go_package = "golang";
 
 // Command from a client.
 message Command {

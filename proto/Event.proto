@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package boundless.services;
+option go_package = "golang";
 
 // An event emitted
 message Event {

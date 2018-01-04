@@ -8,7 +8,7 @@ import "Command.proto";
 // service definition.
 service WormService {
   // Issue a Command
-  rpc SendCommand(Command) returns (Response) {}
+  rpc IssueCommand(Command) returns (Response) {}
 
   // Subscribe, receive Events
   rpc Subscribe(Subscription) returns (stream Event) {}

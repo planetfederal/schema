@@ -1,9 +1,9 @@
 To add functionality, like new methods or parameter/response types:
 
 1. Modify worm.proto as needed
-2. To refresh the go server code, from proto directory:
+2. To refresh the go server code, from golang directory:
 
-        protoc -I worm/ worm/worm.proto --go_out=plugins=grpc:worm
+        make compile
 
 3. To refresh the python client code, from proto directory:
 

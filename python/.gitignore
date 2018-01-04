@@ -19,4 +19,3 @@ var/
 __pycache__
 *.pyc
 *.p
-*pb2.py

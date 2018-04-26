@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "golang";
+import "Metadata.proto";
+
+option go_package = "schema";
 
 // Command from a client.
 message Command {
@@ -8,6 +10,7 @@ message Command {
   string action = 2;
   bytes data = 3;
   ContextType context = 4;
+  Metadata metadata = 5;
 
   enum ContextType {
     DESKTOP = 0;

@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-option go_package = "golang";
+import "Metadata.proto";
+
+option go_package = "schema";
 
 // An event emitted
 message Event {
@@ -8,4 +10,5 @@ message Event {
   string type = 2;
   bytes data = 3;
   string parentId = 4;
+  Metadata metadata = 5;
 }

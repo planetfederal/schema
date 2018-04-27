@@ -2,7 +2,6 @@ syntax = "proto3";
 
 option go_package = "golang";
 
-import "Event.proto";
 import "Command.proto";
 
 // service definition.

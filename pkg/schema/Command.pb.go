@@ -9,12 +9,13 @@ It is generated from these files:
 	Command.proto
 
 It has these top-level messages:
+	Metadata
+	Event
 	Command
 */
 package schema
 
 import proto "github.com/golang/protobuf/proto"
-import Metadata "Metadata.pb"
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -45,20 +46,54 @@ func (x Command_ContextType) String() string {
 	return proto.EnumName(Command_ContextType_name, int32(x))
 }
 
+type Metadata struct {
+	TracingTags map[string]string `protobuf:"bytes,1,rep,name=tracingTags" json:"tracingTags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+}
+
+func (m *Metadata) Reset()         { *m = Metadata{} }
+func (m *Metadata) String() string { return proto.CompactTextString(m) }
+func (*Metadata) ProtoMessage()    {}
+
+func (m *Metadata) GetTracingTags() map[string]string {
+	if m != nil {
+		return m.TracingTags
+	}
+	return nil
+}
+
+type Event struct {
+	Id       string    `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Type     string    `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
+	Data     []byte    `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	ParentId string    `protobuf:"bytes,4,opt,name=parentId" json:"parentId,omitempty"`
+	Metadata *Metadata `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
+}
+
+func (m *Event) Reset()         { *m = Event{} }
+func (m *Event) String() string { return proto.CompactTextString(m) }
+func (*Event) ProtoMessage()    {}
+
+func (m *Event) GetMetadata() *Metadata {
+	if m != nil {
+		return m.Metadata
+	}
+	return nil
+}
+
 // Command from a client.
 type Command struct {
 	Id       string              `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
 	Action   string              `protobuf:"bytes,2,opt,name=action" json:"action,omitempty"`
 	Data     []byte              `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
 	Context  Command_ContextType `protobuf:"varint,4,opt,name=context,enum=Command_ContextType" json:"context,omitempty"`
-	Metadata *Metadata.Metadata  `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
+	Metadata *Metadata           `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
 }
 
 func (m *Command) Reset()         { *m = Command{} }
 func (m *Command) String() string { return proto.CompactTextString(m) }
 func (*Command) ProtoMessage()    {}
 
-func (m *Command) GetMetadata() *Metadata.Metadata {
+func (m *Command) GetMetadata() *Metadata {
 	if m != nil {
 		return m.Metadata
 	}

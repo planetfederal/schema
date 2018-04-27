@@ -1,7 +1,0 @@
-syntax = "proto3";
-
-option go_package = "schema";
-
-message Metadata {
-  map<string,string> tracingTags = 1;
-}

@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option go_package = "schema";
 
-import "Event.proto";
-import "Command.proto";
+import "schema/Event.proto";
+import "schema/Command.proto";
 
 // service definition.
 service WormService {

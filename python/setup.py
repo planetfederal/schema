@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-with open('boundlessgeo_schema/README.rst', 'r') as inp:
+with open('schema/README.rst', 'r') as inp:
     LONG_DESCRIPTION = inp.read()
 
 setup(

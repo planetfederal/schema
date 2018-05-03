@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-import "Metadata.proto";
-
 option go_package = "schema";
+
+import "schema/Metadata.proto";
 
 // An event emitted
 message Event {

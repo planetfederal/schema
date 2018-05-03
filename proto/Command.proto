@@ -1,18 +1,8 @@
 syntax = "proto3";
 
+import "Metadata.proto";
+
 option go_package = "schema";
-
-message Metadata {
-  map<string,string> tracingTags = 1;
-}
-
-message Event {
-  string id = 1;
-  string type = 2;
-  bytes data = 3;
-  string parentId = 4;
-  Metadata metadata = 5;
-}
 
 // Command from a client.
 message Command {

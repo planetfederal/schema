@@ -7,7 +7,7 @@ The commands below will create Protobuf classes for use in iOS, Python, and JVM 
 Javascript will use the `actions.json` and `events.json` since the contents of the file is already native to the language.
 
 ## Building Schema Artifacts
-> As of version 0.15.2, you no longer need NodeJS/NPM to build the artifacts. You will need sh and Bash (available on
+> As of version 0.14.0, you no longer need NodeJS/NPM to build the artifacts. You will need sh and Bash (available on
 most Linux distributions by default, easily installed on OSX/MacOS. Cigwin may work on Windows, but it has not been
 tested.).
 

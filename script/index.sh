@@ -7,10 +7,15 @@
 # and compiles them (as necessary).
 ###############################################################################
 
+# script dir
+if [ `uname` == "Linux" ]; then
+    SCRIPT_DIR=$(dirname $(readlink -f $0))
+else
+    SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+fi
 # JSON schema files. Figure out the path based on the location of this script.
-THIS_SCRIPT=$(readlink -f $0)
 # schema directory is the parent directory of the directory that holds this script
-SCHEMA_DIR=$(dirname $(dirname ${THIS_SCRIPT}))
+SCHEMA_DIR=$(dirname ${SCRIPT_DIR})
 # Supported targets
 TARGETS="java objc"
 

@@ -35,7 +35,13 @@ for j in ['actions', 'events']:
         pickle.dump(_dict, fp)
 EOF
 )
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Metadata.proto
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Command.proto $SRC_DIR/Metadata.proto
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Event.proto $SRC_DIR/Metadata.proto
 protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Msg.proto
+protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Feature.proto
+protoc -I=$SRC_DIR --python_out=plugins=grpc:$DST_DIR $SRC_DIR/worm.proto \
+$SRC_DIR/Command.proto $SRC_DIR/Event.proto
 # switch to the python dir
 cd $PYTHON_DIR
 # build sdist package

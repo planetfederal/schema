@@ -15,8 +15,12 @@ node {
           docker run -v \$(pwd -P):/code \
                      -w /code quay.io/boundlessgeo/sonar-maven-py3-alpine bash \
                      -e -c 'apk add --update --no-cache protobuf py-setuptools && \
-                     ./script/java.sh && ./script/objc.sh && ./script/python.sh'
+                     ./script/java.sh && \
+                     ./script/objc.sh && \
+                     ./script/python.sh'
           """
+          // ./script/golang.sh should NOT be added here ^
+          // golang pulls the repository, so go source must be committed to the repo
       }
     }
 

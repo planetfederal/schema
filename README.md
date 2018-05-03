@@ -24,6 +24,8 @@ https://ciapi.boundlessgeo.io/job/boundless-schema-deploy
 Any time a commit is pushed to `master`, that job will pick up the changes and deploy new artifacts. **It is imperative
 that commits merged to `master` increment the version in `script/version.json`.**
 
+**Also run golang.sh to update the go source as it's not auto-generated and deployed by Jenkins**
+
 ### Java
 This will put a schema jar in your local maven repo
 

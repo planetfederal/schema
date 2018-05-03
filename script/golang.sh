@@ -8,16 +8,20 @@ else
     SCRIPT_DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 fi
 # destination dir
-DST_DIR=$SCRIPT_DIR/../pkg/schema/
+DST_DIR=$SCRIPT_DIR/../pkg/
 # source directory for proto
-SRC_DIR=$SCRIPT_DIR/../proto
+PROTO_DIR=$SCRIPT_DIR/../proto
+# pkg directory
+PKG_DIR=$SCRIPT_DIR/../proto/schema/
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
-# build protobufs
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/Metadata.proto
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/Command.proto $SRC_DIR/Metadata.proto
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/Event.proto $SRC_DIR/Metadata.proto
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/Msg.proto
-protoc -I=$SRC_DIR --go_out=$DST_DIR $SRC_DIR/Feature.proto
-protoc -I=$SRC_DIR --go_out=plugins=grpc:$DST_DIR $SRC_DIR/worm.proto \
-$SRC_DIR/Command.proto $SRC_DIR/Event.proto
+# build protobufs for grpc
+protoc -I=$PROTO_DIR --go_out=plugins=grpc:$DST_DIR $PKG_DIR/worm.proto \
+$PKG_DIR/Command.proto $PKG_DIR/Event.proto $PKG_DIR/Metadata.proto
+# build protobufs without grpc
+protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Metadata.proto
+protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Command.proto $PKG_DIR/Metadata.proto
+protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Event.proto $PKG_DIR/Metadata.proto
+protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Msg.proto
+protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Feature.proto
+

@@ -10,7 +10,7 @@ fi
 # destination dir
 DST_DIR=$SCRIPT_DIR/../pkg/schema/
 # source directory for proto
-SRC_DIR=$SCRIPT_DIR/../proto/
+SRC_DIR=$SCRIPT_DIR/../proto
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
 # build protobufs

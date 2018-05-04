@@ -38,7 +38,7 @@ protoc "${PKG_DIR}/Event.proto" "${PKG_DIR}/Metadata.proto" --proto_path="${PROT
 protoc "${PKG_DIR}/Msg.proto" --proto_path="${PROTO_DIR}" --java_out="${PROTOBUF_SRC_DIR}"
 protoc "${PKG_DIR}/Feature.proto" --proto_path="${PROTO_DIR}" --java_out="${PROTOBUF_SRC_DIR}"
 # build Java artifacts
-# geenrate the pom from the version.json
+# generate the pom from the version.json
 # get the version from version.json
 VERSION="$(grep version "${SCRIPT_DIR}"/version.json | awk '{print $2}'| sed -e 's/\"//g')"
 # fill in pom.xml with version

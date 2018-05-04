@@ -19,3 +19,4 @@ var/
 __pycache__
 *.pyc
 *.p
+*.py

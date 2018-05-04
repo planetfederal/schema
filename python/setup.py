@@ -1,12 +1,12 @@
 from setuptools import setup, find_packages
 
-with open('schema/README.rst', 'r') as inp:
+with open('boundlessgeo_schema/README.rst', 'r') as inp:
     LONG_DESCRIPTION = inp.read()
 
 setup(
     name='boundlessgeo-schema',
     description='schema for boundlessgeo actions',
-    version=__import__('schema').get_version(),
+    version=__import__('boundlessgeo_schema').get_version(),
     author='Boundless Spatial',
     author_email='contact@boundlessgeo.com',
     url='https://github.com/boundlessgeo/schema',

@@ -14,7 +14,7 @@ DST_DIR=$PYTHON_DIR/
 # source directory for proto
 PROTO_DIR=$SCRIPT_DIR/../proto
 # pkg directory
-PKG_DIR=$SCRIPT_DIR/../proto/schema/
+PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
 # convert the actions.json to a actions.p (pickle), store the version from
@@ -33,7 +33,7 @@ for j in ['actions', 'events']:
             json_str = version_file.read()
             version = loads(json_str)['version']
             _dict['_version'] = version
-    with open('../python/schema/{0}.p'.format(j), 'wb') as fp:
+    with open('../python/boundlessgeo_schema/{0}.p'.format(j), 'wb') as fp:
         pickle.dump(_dict, fp)
 EOF
 )

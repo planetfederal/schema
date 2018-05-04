@@ -2,8 +2,8 @@ syntax = "proto3";
 
 option go_package = "schema";
 
-import "schema/Event.proto";
-import "schema/Command.proto";
+import "boundlessgeo_schema/Event.proto";
+import "boundlessgeo_schema/Command.proto";
 
 // service definition.
 service WormService {

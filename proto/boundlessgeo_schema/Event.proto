@@ -2,7 +2,7 @@ syntax = "proto3";
 
 option go_package = "schema";
 
-import "schema/Metadata.proto";
+import "boundlessgeo_schema/Metadata.proto";
 
 // An event emitted
 message Event {

@@ -12,7 +12,7 @@ DST_DIR=$SCRIPT_DIR/../pkg/
 # source directory for proto
 PROTO_DIR=$SCRIPT_DIR/../proto
 # pkg directory
-PKG_DIR=$SCRIPT_DIR/../proto/schema/
+PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
 # build protobufs for grpc

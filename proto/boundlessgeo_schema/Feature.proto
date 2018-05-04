@@ -1,8 +1,8 @@
 syntax = "proto3";
 
-option go_package = "schema";
 option java_package = "com.boundlessgeo.schema";
 option java_outer_classname = "FeaturePbf";
+option go_package = "schema";
 
 message Feature {
   string fid = 1;

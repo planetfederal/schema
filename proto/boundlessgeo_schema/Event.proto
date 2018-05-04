@@ -1,5 +1,7 @@
 syntax = "proto3";
 
+option java_package = "com.boundlessgeo.schema";
+option java_outer_classname = "EventPbf";
 option go_package = "schema";
 
 import "boundlessgeo_schema/Metadata.proto";

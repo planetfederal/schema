@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+option java_package = "com.boundlessgeo.schema";
+option java_outer_classname = "EventPbf";
+option go_package = "schema";
+
+import "boundlessgeo_schema/Metadata.proto";
+
+// An event emitted
+message Event {
+  string id = 1;
+  string type = 2;
+  bytes data = 3;
+  string parentId = 4;
+  Metadata metadata = 5;
+}

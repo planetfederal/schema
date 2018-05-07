@@ -1,18 +1,10 @@
 syntax = "proto3";
 
+option java_package = "com.boundlessgeo.schema";
+option java_outer_classname = "CommandPbf";
 option go_package = "schema";
 
-message Metadata {
-  map<string,string> tracingTags = 1;
-}
-
-message Event {
-  string id = 1;
-  string type = 2;
-  bytes data = 3;
-  string parentId = 4;
-  Metadata metadata = 5;
-}
+import "boundlessgeo_schema/Metadata.proto";
 
 // Command from a client.
 message Command {

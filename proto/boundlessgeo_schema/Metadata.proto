@@ -1,0 +1,9 @@
+syntax = "proto3";
+
+option java_package = "com.boundlessgeo.schema";
+option java_outer_classname = "MetadataPbf";
+option go_package = "schema";
+
+message Metadata {
+  map<string, string> tracingTags = 1;
+}

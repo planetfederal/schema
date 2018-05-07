@@ -10,9 +10,11 @@ fi
 # python dir
 PYTHON_DIR=$SCRIPT_DIR/../python
 # destination dir
-DST_DIR=$PYTHON_DIR/boundlessgeo_schema
+DST_DIR=$PYTHON_DIR/
 # source directory for proto
-SRC_DIR=$SCRIPT_DIR/../proto
+PROTO_DIR=$SCRIPT_DIR/../proto
+# pkg directory
+PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
 # convert the actions.json to a actions.p (pickle), store the version from
@@ -35,7 +37,14 @@ for j in ['actions', 'events']:
         pickle.dump(_dict, fp)
 EOF
 )
-protoc -I=$SRC_DIR --python_out=$DST_DIR $SRC_DIR/Msg.proto
+# build protobufs for grpc
+protoc -I=$PROTO_DIR --python_out=plugins=grpc:$DST_DIR $PKG_DIR/worm.proto
+# build protobufs without grpc
+protoc -I $PROTO_DIR --python_out=$DST_DIR $PKG_DIR/Metadata.proto
+protoc -I $PROTO_DIR --python_out=$DST_DIR $PKG_DIR/Command.proto
+protoc -I=$PROTO_DIR --python_out=$DST_DIR $PKG_DIR/Event.proto
+protoc -I=$PROTO_DIR --python_out=$DST_DIR $PKG_DIR/Msg.proto
+protoc -I=$PROTO_DIR --python_out=$DST_DIR $PKG_DIR/Feature.proto
 # switch to the python dir
 cd $PYTHON_DIR
 # build sdist package

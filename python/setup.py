@@ -3,7 +3,6 @@ from setuptools import setup, find_packages
 with open('boundlessgeo_schema/README.rst', 'r') as inp:
     LONG_DESCRIPTION = inp.read()
 
-
 setup(
     name='boundlessgeo-schema',
     description='schema for boundlessgeo actions',

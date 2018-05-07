@@ -15,13 +15,6 @@ PROTO_DIR=$SCRIPT_DIR/../proto
 PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/
 # switch to the script dir in case of running the script ouside of this dir
 cd $SCRIPT_DIR
-# build protobufs for grpc
-protoc -I=$PROTO_DIR --go_out=plugins=grpc:$DST_DIR $PKG_DIR/worm.proto \
-$PKG_DIR/Command.proto $PKG_DIR/Event.proto $PKG_DIR/Metadata.proto
-# build protobufs without grpc
-protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Metadata.proto
-protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Command.proto $PKG_DIR/Metadata.proto
-protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Event.proto $PKG_DIR/Metadata.proto
-protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Msg.proto
-protoc -I=$PROTO_DIR --go_out=$DST_DIR $PKG_DIR/Feature.proto
+# build protobufs
+protoc -I=$PROTO_DIR --go_out=plugins=grpc:$DST_DIR $PKG_DIR/*.proto
 

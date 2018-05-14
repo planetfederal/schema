@@ -12,6 +12,12 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type OperationType int32
 
 const (
@@ -34,18 +40,42 @@ var OperationType_value = map[string]int32{
 func (x OperationType) String() string {
 	return proto.EnumName(OperationType_name, int32(x))
 }
-func (OperationType) EnumDescriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
-
-type Feature struct {
-	Fid        string            `protobuf:"bytes,1,opt,name=fid" json:"fid,omitempty"`
-	Properties map[string]string `protobuf:"bytes,2,rep,name=properties" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
-	Geometry   []byte            `protobuf:"bytes,3,opt,name=geometry,proto3" json:"geometry,omitempty"`
+func (OperationType) EnumDescriptor() ([]byte, []int) {
+	return fileDescriptor_Feature_535d9abfe516bbdb, []int{0}
 }
 
-func (m *Feature) Reset()                    { *m = Feature{} }
-func (m *Feature) String() string            { return proto.CompactTextString(m) }
-func (*Feature) ProtoMessage()               {}
-func (*Feature) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
+type Feature struct {
+	Fid                  string            `protobuf:"bytes,1,opt,name=fid" json:"fid,omitempty"`
+	Properties           map[string]string `protobuf:"bytes,2,rep,name=properties" json:"properties,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	Geometry             []byte            `protobuf:"bytes,3,opt,name=geometry,proto3" json:"geometry,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
+}
+
+func (m *Feature) Reset()         { *m = Feature{} }
+func (m *Feature) String() string { return proto.CompactTextString(m) }
+func (*Feature) ProtoMessage()    {}
+func (*Feature) Descriptor() ([]byte, []int) {
+	return fileDescriptor_Feature_535d9abfe516bbdb, []int{0}
+}
+func (m *Feature) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Feature.Unmarshal(m, b)
+}
+func (m *Feature) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Feature.Marshal(b, m, deterministic)
+}
+func (dst *Feature) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Feature.Merge(dst, src)
+}
+func (m *Feature) XXX_Size() int {
+	return xxx_messageInfo_Feature.Size(m)
+}
+func (m *Feature) XXX_DiscardUnknown() {
+	xxx_messageInfo_Feature.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Feature proto.InternalMessageInfo
 
 func (m *Feature) GetFid() string {
 	if m != nil {
@@ -69,15 +99,37 @@ func (m *Feature) GetGeometry() []byte {
 }
 
 type Operation struct {
-	Operation OperationType `protobuf:"varint,1,opt,name=operation,enum=OperationType" json:"operation,omitempty"`
-	Source    string        `protobuf:"bytes,2,opt,name=source" json:"source,omitempty"`
-	Feature   *Feature      `protobuf:"bytes,3,opt,name=feature" json:"feature,omitempty"`
+	Operation            OperationType `protobuf:"varint,1,opt,name=operation,enum=OperationType" json:"operation,omitempty"`
+	Source               string        `protobuf:"bytes,2,opt,name=source" json:"source,omitempty"`
+	Feature              *Feature      `protobuf:"bytes,3,opt,name=feature" json:"feature,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}      `json:"-"`
+	XXX_unrecognized     []byte        `json:"-"`
+	XXX_sizecache        int32         `json:"-"`
 }
 
-func (m *Operation) Reset()                    { *m = Operation{} }
-func (m *Operation) String() string            { return proto.CompactTextString(m) }
-func (*Operation) ProtoMessage()               {}
-func (*Operation) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
+func (m *Operation) Reset()         { *m = Operation{} }
+func (m *Operation) String() string { return proto.CompactTextString(m) }
+func (*Operation) ProtoMessage()    {}
+func (*Operation) Descriptor() ([]byte, []int) {
+	return fileDescriptor_Feature_535d9abfe516bbdb, []int{1}
+}
+func (m *Operation) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Operation.Unmarshal(m, b)
+}
+func (m *Operation) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Operation.Marshal(b, m, deterministic)
+}
+func (dst *Operation) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Operation.Merge(dst, src)
+}
+func (m *Operation) XXX_Size() int {
+	return xxx_messageInfo_Operation.Size(m)
+}
+func (m *Operation) XXX_DiscardUnknown() {
+	xxx_messageInfo_Operation.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Operation proto.InternalMessageInfo
 
 func (m *Operation) GetOperation() OperationType {
 	if m != nil {
@@ -102,13 +154,16 @@ func (m *Operation) GetFeature() *Feature {
 
 func init() {
 	proto.RegisterType((*Feature)(nil), "Feature")
+	proto.RegisterMapType((map[string]string)(nil), "Feature.PropertiesEntry")
 	proto.RegisterType((*Operation)(nil), "Operation")
 	proto.RegisterEnum("OperationType", OperationType_name, OperationType_value)
 }
 
-func init() { proto.RegisterFile("boundlessgeo_schema/Feature.proto", fileDescriptor2) }
+func init() {
+	proto.RegisterFile("boundlessgeo_schema/Feature.proto", fileDescriptor_Feature_535d9abfe516bbdb)
+}
 
-var fileDescriptor2 = []byte{
+var fileDescriptor_Feature_535d9abfe516bbdb = []byte{
 	// 299 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x5c, 0x51, 0x4d, 0x4b, 0xc3, 0x40,
 	0x14, 0x74, 0x53, 0x4c, 0xdb, 0x57, 0xad, 0x61, 0x11, 0x0d, 0x3d, 0xd5, 0x9e, 0x8a, 0x68, 0x84,

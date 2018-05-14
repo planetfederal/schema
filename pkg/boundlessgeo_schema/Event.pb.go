@@ -12,19 +12,47 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 // An event emitted
 type Event struct {
-	Id       string    `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
-	Type     string    `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
-	Data     []byte    `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
-	ParentId string    `protobuf:"bytes,4,opt,name=parentId" json:"parentId,omitempty"`
-	Metadata *Metadata `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
+	Id                   string    `protobuf:"bytes,1,opt,name=id" json:"id,omitempty"`
+	Type                 string    `protobuf:"bytes,2,opt,name=type" json:"type,omitempty"`
+	Data                 []byte    `protobuf:"bytes,3,opt,name=data,proto3" json:"data,omitempty"`
+	ParentId             string    `protobuf:"bytes,4,opt,name=parentId" json:"parentId,omitempty"`
+	Metadata             *Metadata `protobuf:"bytes,5,opt,name=metadata" json:"metadata,omitempty"`
+	XXX_NoUnkeyedLiteral struct{}  `json:"-"`
+	XXX_unrecognized     []byte    `json:"-"`
+	XXX_sizecache        int32     `json:"-"`
 }
 
-func (m *Event) Reset()                    { *m = Event{} }
-func (m *Event) String() string            { return proto.CompactTextString(m) }
-func (*Event) ProtoMessage()               {}
-func (*Event) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (m *Event) Reset()         { *m = Event{} }
+func (m *Event) String() string { return proto.CompactTextString(m) }
+func (*Event) ProtoMessage()    {}
+func (*Event) Descriptor() ([]byte, []int) {
+	return fileDescriptor_Event_b7acea1306321d2d, []int{0}
+}
+func (m *Event) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Event.Unmarshal(m, b)
+}
+func (m *Event) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Event.Marshal(b, m, deterministic)
+}
+func (dst *Event) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Event.Merge(dst, src)
+}
+func (m *Event) XXX_Size() int {
+	return xxx_messageInfo_Event.Size(m)
+}
+func (m *Event) XXX_DiscardUnknown() {
+	xxx_messageInfo_Event.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Event proto.InternalMessageInfo
 
 func (m *Event) GetId() string {
 	if m != nil {
@@ -65,9 +93,11 @@ func init() {
 	proto.RegisterType((*Event)(nil), "Event")
 }
 
-func init() { proto.RegisterFile("boundlessgeo_schema/Event.proto", fileDescriptor1) }
+func init() {
+	proto.RegisterFile("boundlessgeo_schema/Event.proto", fileDescriptor_Event_b7acea1306321d2d)
+}
 
-var fileDescriptor1 = []byte{
+var fileDescriptor_Event_b7acea1306321d2d = []byte{
 	// 190 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x92, 0x4f, 0xca, 0x2f, 0xcd,
 	0x4b, 0xc9, 0x49, 0x2d, 0x2e, 0x4e, 0x4f, 0xcd, 0x8f, 0x2f, 0x4e, 0xce, 0x48, 0xcd, 0x4d, 0xd4,

@@ -17,17 +17,45 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 // Result of an rpc call
 type Response struct {
-	Success bool   `protobuf:"varint,1,opt,name=success" json:"success,omitempty"`
-	Data    []byte `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
-	Code    int32  `protobuf:"varint,3,opt,name=code" json:"code,omitempty"`
+	Success              bool     `protobuf:"varint,1,opt,name=success" json:"success,omitempty"`
+	Data                 []byte   `protobuf:"bytes,2,opt,name=data,proto3" json:"data,omitempty"`
+	Code                 int32    `protobuf:"varint,3,opt,name=code" json:"code,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Response) Reset()                    { *m = Response{} }
-func (m *Response) String() string            { return proto.CompactTextString(m) }
-func (*Response) ProtoMessage()               {}
-func (*Response) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{0} }
+func (m *Response) Reset()         { *m = Response{} }
+func (m *Response) String() string { return proto.CompactTextString(m) }
+func (*Response) ProtoMessage()    {}
+func (*Response) Descriptor() ([]byte, []int) {
+	return fileDescriptor_worm_65247360d843ae20, []int{0}
+}
+func (m *Response) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Response.Unmarshal(m, b)
+}
+func (m *Response) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Response.Marshal(b, m, deterministic)
+}
+func (dst *Response) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Response.Merge(dst, src)
+}
+func (m *Response) XXX_Size() int {
+	return xxx_messageInfo_Response.Size(m)
+}
+func (m *Response) XXX_DiscardUnknown() {
+	xxx_messageInfo_Response.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Response proto.InternalMessageInfo
 
 func (m *Response) GetSuccess() bool {
 	if m != nil {
@@ -52,13 +80,35 @@ func (m *Response) GetCode() int32 {
 
 // Subscribe for Events
 type Subscription struct {
-	Topic string `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	Topic                string   `protobuf:"bytes,1,opt,name=topic" json:"topic,omitempty"`
+	XXX_NoUnkeyedLiteral struct{} `json:"-"`
+	XXX_unrecognized     []byte   `json:"-"`
+	XXX_sizecache        int32    `json:"-"`
 }
 
-func (m *Subscription) Reset()                    { *m = Subscription{} }
-func (m *Subscription) String() string            { return proto.CompactTextString(m) }
-func (*Subscription) ProtoMessage()               {}
-func (*Subscription) Descriptor() ([]byte, []int) { return fileDescriptor5, []int{1} }
+func (m *Subscription) Reset()         { *m = Subscription{} }
+func (m *Subscription) String() string { return proto.CompactTextString(m) }
+func (*Subscription) ProtoMessage()    {}
+func (*Subscription) Descriptor() ([]byte, []int) {
+	return fileDescriptor_worm_65247360d843ae20, []int{1}
+}
+func (m *Subscription) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Subscription.Unmarshal(m, b)
+}
+func (m *Subscription) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Subscription.Marshal(b, m, deterministic)
+}
+func (dst *Subscription) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Subscription.Merge(dst, src)
+}
+func (m *Subscription) XXX_Size() int {
+	return xxx_messageInfo_Subscription.Size(m)
+}
+func (m *Subscription) XXX_DiscardUnknown() {
+	xxx_messageInfo_Subscription.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Subscription proto.InternalMessageInfo
 
 func (m *Subscription) GetTopic() string {
 	if m != nil {
@@ -80,8 +130,9 @@ var _ grpc.ClientConn
 // is compatible with the grpc package it is being compiled against.
 const _ = grpc.SupportPackageIsVersion4
 
-// Client API for WormService service
-
+// WormServiceClient is the client API for WormService service.
+//
+// For semantics around ctx use and closing/ending streaming RPCs, please refer to https://godoc.org/google.golang.org/grpc#ClientConn.NewStream.
 type WormServiceClient interface {
 	// Issue a Command
 	IssueCommand(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Response, error)
@@ -99,7 +150,7 @@ func NewWormServiceClient(cc *grpc.ClientConn) WormServiceClient {
 
 func (c *wormServiceClient) IssueCommand(ctx context.Context, in *Command, opts ...grpc.CallOption) (*Response, error) {
 	out := new(Response)
-	err := grpc.Invoke(ctx, "/WormService/IssueCommand", in, out, c.cc, opts...)
+	err := c.cc.Invoke(ctx, "/WormService/IssueCommand", in, out, opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -107,7 +158,7 @@ func (c *wormServiceClient) IssueCommand(ctx context.Context, in *Command, opts 
 }
 
 func (c *wormServiceClient) Subscribe(ctx context.Context, in *Subscription, opts ...grpc.CallOption) (WormService_SubscribeClient, error) {
-	stream, err := grpc.NewClientStream(ctx, &_WormService_serviceDesc.Streams[0], c.cc, "/WormService/Subscribe", opts...)
+	stream, err := c.cc.NewStream(ctx, &_WormService_serviceDesc.Streams[0], "/WormService/Subscribe", opts...)
 	if err != nil {
 		return nil, err
 	}
@@ -209,9 +260,11 @@ var _WormService_serviceDesc = grpc.ServiceDesc{
 	Metadata: "boundlessgeo_schema/worm.proto",
 }
 
-func init() { proto.RegisterFile("boundlessgeo_schema/worm.proto", fileDescriptor5) }
+func init() {
+	proto.RegisterFile("boundlessgeo_schema/worm.proto", fileDescriptor_worm_65247360d843ae20)
+}
 
-var fileDescriptor5 = []byte{
+var fileDescriptor_worm_65247360d843ae20 = []byte{
 	// 240 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0x6c, 0x8f, 0x41, 0x4b, 0xfc, 0x30,
 	0x10, 0xc5, 0x37, 0xff, 0xbf, 0x5b, 0xdb, 0xb1, 0x5e, 0x82, 0x87, 0xd2, 0x83, 0xd6, 0xa2, 0xd2,

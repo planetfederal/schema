@@ -13,6 +13,7 @@ message Command {
   bytes data = 3;
   ContextType context = 4;
   Metadata metadata = 5;
+  int64 created = 6;
 
   enum ContextType {
     DESKTOP = 0;

@@ -13,4 +13,5 @@ message Event {
   bytes data = 3;
   string parentId = 4;
   Metadata metadata = 5;
+  int64 created = 6;
 }

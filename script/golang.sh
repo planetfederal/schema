@@ -17,4 +17,7 @@ PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/
 cd $SCRIPT_DIR
 # build protobufs
 protoc -I=$PROTO_DIR --go_out=plugins=grpc:$DST_DIR $PKG_DIR/*.proto
+#source generation script
+GEN_SRC_SCRIPT="${SCRIPT_DIR}/index.sh"
 
+${GEN_SRC_SCRIPT} golang ${PKG_DIR}

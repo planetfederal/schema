@@ -17,7 +17,7 @@ fi
 # schema directory is the parent directory of the directory that holds this script
 SCHEMA_DIR=$(dirname ${SCRIPT_DIR})
 # Supported targets
-TARGETS="java objc"
+TARGETS="java objc golang"
 
 ###############################################################################
 # Print this script's usage
@@ -276,8 +276,8 @@ function main() {
     for SCHEMAFILE in `ls ${SCHEMA_DIR}/*.json`; do
       # get schema file and strip the extension
       SCHEMA=$(basename ${SCHEMAFILE} .json)
-      # lower case the schema name
-      SCHEMA=${SCHEMA,,}
+      # lower case the name
+			SCHEMA=${SCHEMA,,}
       # upper case the first letter
       SCHEMA=${SCHEMA^}
       buildSourceFiles "${1}" "${SCHEMA}" "${SCHEMAFILE}" "${2}"

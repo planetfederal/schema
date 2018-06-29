@@ -12,14 +12,42 @@ var _ = proto.Marshal
 var _ = fmt.Errorf
 var _ = math.Inf
 
+// This is a compile-time assertion to ensure that this generated file
+// is compatible with the proto package it is being compiled against.
+// A compilation error at this line likely means your copy of the
+// proto package needs to be updated.
+const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
+
 type Metadata struct {
-	TracingTags map[string]string `protobuf:"bytes,1,rep,name=tracingTags" json:"tracingTags,omitempty" protobuf_key:"bytes,1,opt,name=key" protobuf_val:"bytes,2,opt,name=value"`
+	TracingTags          map[string]string `protobuf:"bytes,1,rep,name=tracingTags,proto3" json:"tracingTags,omitempty" protobuf_key:"bytes,1,opt,name=key,proto3" protobuf_val:"bytes,2,opt,name=value,proto3"`
+	XXX_NoUnkeyedLiteral struct{}          `json:"-"`
+	XXX_unrecognized     []byte            `json:"-"`
+	XXX_sizecache        int32             `json:"-"`
 }
 
-func (m *Metadata) Reset()                    { *m = Metadata{} }
-func (m *Metadata) String() string            { return proto.CompactTextString(m) }
-func (*Metadata) ProtoMessage()               {}
-func (*Metadata) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+func (m *Metadata) Reset()         { *m = Metadata{} }
+func (m *Metadata) String() string { return proto.CompactTextString(m) }
+func (*Metadata) ProtoMessage()    {}
+func (*Metadata) Descriptor() ([]byte, []int) {
+	return fileDescriptor_Metadata_74dcdafe2754bb62, []int{0}
+}
+func (m *Metadata) XXX_Unmarshal(b []byte) error {
+	return xxx_messageInfo_Metadata.Unmarshal(m, b)
+}
+func (m *Metadata) XXX_Marshal(b []byte, deterministic bool) ([]byte, error) {
+	return xxx_messageInfo_Metadata.Marshal(b, m, deterministic)
+}
+func (dst *Metadata) XXX_Merge(src proto.Message) {
+	xxx_messageInfo_Metadata.Merge(dst, src)
+}
+func (m *Metadata) XXX_Size() int {
+	return xxx_messageInfo_Metadata.Size(m)
+}
+func (m *Metadata) XXX_DiscardUnknown() {
+	xxx_messageInfo_Metadata.DiscardUnknown(m)
+}
+
+var xxx_messageInfo_Metadata proto.InternalMessageInfo
 
 func (m *Metadata) GetTracingTags() map[string]string {
 	if m != nil {
@@ -30,11 +58,14 @@ func (m *Metadata) GetTracingTags() map[string]string {
 
 func init() {
 	proto.RegisterType((*Metadata)(nil), "Metadata")
+	proto.RegisterMapType((map[string]string)(nil), "Metadata.TracingTagsEntry")
 }
 
-func init() { proto.RegisterFile("boundlessgeo_schema/Metadata.proto", fileDescriptor3) }
+func init() {
+	proto.RegisterFile("boundlessgeo_schema/Metadata.proto", fileDescriptor_Metadata_74dcdafe2754bb62)
+}
 
-var fileDescriptor3 = []byte{
+var fileDescriptor_Metadata_74dcdafe2754bb62 = []byte{
 	// 174 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0x52, 0x4a, 0xca, 0x2f, 0xcd,
 	0x4b, 0xc9, 0x49, 0x2d, 0x2e, 0x4e, 0x4f, 0xcd, 0x8f, 0x2f, 0x4e, 0xce, 0x48, 0xcd, 0x4d, 0xd4,

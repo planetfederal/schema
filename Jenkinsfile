@@ -14,7 +14,7 @@ node {
         sh """
           docker run -v \$(pwd -P):/code \
                      -w /code quay.io/boundlessgeo/schema bash \
-                     ./script/java.sh && \
+                     -e -c './script/java.sh && \
                      ./script/objc.sh && \
                      ./script/python.sh'
           """

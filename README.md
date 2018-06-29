@@ -8,7 +8,7 @@ Javascript will use the `actions.json` and `events.json` since the contents of t
 
 ## Building Schema Artifacts
 
-- docker run -it -v <PATH>/schema:/code quay.io/boundlessgeo/schema bash script/golang.sh
+- docker run -it -v <PATH>/schema:/code quay.io/boundlessgeo/schema bash script/<language>.sh
 
 ### Commits merged to `master` **must** increment the version in `script/version.json`.
 

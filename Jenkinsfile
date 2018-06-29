@@ -14,7 +14,6 @@ node {
         sh """
           docker run -v \$(pwd -P):/code \
                      -w /code quay.io/boundlessgeo/schema bash \
-                     -e -c 'apk add --update --no-cache py-setuptools && \
                      ./script/java.sh && \
                      ./script/objc.sh && \
                      ./script/python.sh'

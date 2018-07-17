@@ -2,4 +2,4 @@
 
 - [ ] Increment the version in `script/version.json`
 - [ ] Increment the version in `README.md`
-- [ ] **If** protobuf files were modified, re-generate golang source by `sh script/golang.sh` (it's not auto-generated)
+- [ ] **If** protobuf files were modified, re-generate golang source [manually](https://github.com/boundlessgeo/schema#building-schema-artifacts)

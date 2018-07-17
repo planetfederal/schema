@@ -36,4 +36,6 @@ const (
 	SIO_IMPORT_FAIL                          = "v1/SIO_IMPORT_FAIL"
 	GDAL_INFO_ERROR                          = "v1/GDAL_INFO_ERROR"
 	GDAL_INFO_SUCCESS                        = "v1/GDAL_INFO_SUCCESS"
+	COG_TRANSFORM_SUCCESS                    = "v1/COG_TRANSFORM_SUCCESS"
+	COG_TRANSFORM_ERROR                      = "v1/COG_TRANSFORM_ERROR"
 )

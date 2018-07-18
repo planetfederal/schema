@@ -19,7 +19,7 @@ GO_SRC_DIR="${PROJECT_DIR}/go_build"
 mkdir -p ${GO_SRC_DIR}
 # remove any old source code laying around that may not get overwritten
 if [ -d ${GO_SRC_DIR} -a -w ${GO_SRC_DIR} ]; then
-  find ${GO_SRC_DIR} -type f -exec rm {} \;
+  find ${GO_SRC_DIR} -type f -name *.pb.go -exec rm {} \;
 fi
 # pkg directory
 PKG_DIR=$SCRIPT_DIR/../proto/boundlessgeo_schema/

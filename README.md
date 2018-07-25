@@ -1,6 +1,6 @@
 # Schema
 
-## Version v0.18.1
+## Version v0.18.2
 
 The Schema repository holds the protocol buffer message schemas used to exchange data between systems.
 The commands below will create Protobuf classes for use in iOS, Python, Golang, and JVM (Clojure, Java, Android) runtimes.
@@ -8,12 +8,12 @@ Javascript will use the `actions.json` and `events.json` since the contents of t
 
 ## Build Artifacts
 ```
-docker run -it -v <PATH>/schema:/code quay.io/boundlessgeo/schema bash script/<LANGUAGE>.sh
+docker run -it -v <ABSOLUTE_PATH_TO>/schema:/code quay.io/boundlessgeo/schema bash script/<LANGUAGE>.sh
 ```
 
 ### Commits merged to `master` **must** increment the version in `script/version.json`.
 
-### Golang source must be updated [manually](https://github.com/boundlessgeo/schema#building-schema-artifacts)
+### Golang source must be updated [manually](https://github.com/boundlessgeo/schema#build-artifacts)
 
 ---
 

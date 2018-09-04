@@ -38,4 +38,6 @@ const (
 	GDAL_INFO_SUCCESS                        = "v1/GDAL_INFO_SUCCESS"
 	COG_TRANSFORM_SUCCESS                    = "v1/COG_TRANSFORM_SUCCESS"
 	COG_TRANSFORM_ERROR                      = "v1/COG_TRANSFORM_ERROR"
+	COMMAND_UNMARSHAL_ERROR                  = "v1/COMMAND_UNMARSHAL_ERROR"
+	WORM_WS_READ_ERROR                       = "v1/WORM_WS_READ_ERROR"
 )

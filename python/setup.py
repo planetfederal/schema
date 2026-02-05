@@ -25,6 +25,6 @@ setup(
         'Operating System :: Other OS',
     ],
     install_requires=[
-        'protobuf==3.3.0',
+        'protobuf==5.29.6',
     ]
 )
